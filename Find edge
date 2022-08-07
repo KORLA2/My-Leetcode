@@ -1,0 +1,30 @@
+We need to find  an edge that causes cycle in undirected graph
+
+[[1,2],[1,3],[2,3]]
+ans:[2,3]
+class Solution {
+public:
+   
+    void manage(int par,int child,vector<int>&find){
+        for(int i=1;i<find.size();++i)
+            if(find[i]==child)find[i]=par;
+        
+    }
+    vector<int> findRedundantConnection(vector<vector<int>>& edges) {
+     
+     vector<int>find(edges.size()+1,0);
+        for(int i=1;i<=edges.size();++i)
+       find[i]=i;
+            
+      for(auto k:edges){
+          
+          int par=find[k[0]];
+          int child=find[k[1]];
+      if(par==child)return k;
+         manage(par,child,find);
+            
+         
+      }
+        return find;
+}
+};
