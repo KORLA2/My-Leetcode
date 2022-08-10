@@ -6,6 +6,8 @@ Find and return the maximum profit you can achieve.
  prices = [7,1,5,3,6,4]
  ans:7;
  
+ //Simple idea is to find longest increasing subarray each time and find maximum - minimum this willl be our ans;
+ 
  class Solution {
 
     public:
