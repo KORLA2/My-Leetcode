@@ -1,0 +1,9 @@
+We are given an array we need to find no good subarrays.
+Good Subarrays->If the prefix  array has only distinct elements in it then the array is said to be good.
+
+An array pref[] is said to be prefix gcd array of array B[] if pref[i] = gcd(B[0], B[1],.. B[i])
+
+For exampe the array {15, 6, 19} is good as the prefix gcd array will be {15, 3, 1} which has every element distinct and the array {18, 6, 24} is bad as the prefix gcd array will be {18, 6, 6} which doesn't have every element distinct.
+Finding Good subarrays
+
+Each element is a good subarray then maintaining pref[] keeping track of prefix gcd;
