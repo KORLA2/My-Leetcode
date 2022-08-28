@@ -1,0 +1,59 @@
+You are given two 0-indexed arrays of strings startWords and targetWords. Each string consists of lowercase English letters only.
+
+For each string in targetWords, check if it is possible to choose a string from startWords and perform a conversion operation on it to be equal to that from targetWords.
+
+The conversion operation is described in the following two steps:
+
+Append any lowercase letter that is not present in the string to its end.
+For example, if the string is "abc", the letters 'd', 'e', or 'y' can be added to it, but not 'a'. If 'd' is added, the resulting string will be "abcd".
+Rearrange the letters of the new string in any arbitrary order.
+For example, "abcd" can be rearranged to "acbd", "bacd", "cbda", and so on. Note that it can also be rearranged to "abcd" itself.
+Return the number of strings in targetWords that can be obtained by performing the operations on any string of startWords.
+
+Brute Force Approach 
+Check what all target Strings satisfy given condition .
+
+Tc:O(M*N);M=size of target array N=size  of start words length
+
+class Solution {
+
+    public:
+ 
+    int wordCount(vector<string>& s, vector<string>& t) {
+    
+        int ans=0;
+ for(string str:t){
+            
+ map<char,int>mp;
+     
+     for(char f:str)
+         mp[f]++;
+     
+     for(string ptr:s){
+        
+         map<char,int>pm;
+         
+         for(char f:ptr)
+         pm[f]++;
+         
+       int neg=0;
+     
+         for(auto k:pm)
+          if(k.second!=mp[k.first]){ neg=1;break;}
+          if(neg)continue;
+         
+         int cnt=1,swit=1;
+         
+         for(auto k:mp)
+             if(k.second!=pm[k.first]){if(cnt)cnt--;
+                                      else {swit=0; break ;}}
+         if(!cnt&&swit)
+         { ans++;break;}
+     }
+     
+     
+ }
+        return ans;
+        
+    }
+};
