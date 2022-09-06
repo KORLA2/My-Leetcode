@@ -1,2 +1,2 @@
 # My-Leetcode
-Contains some of the intresting leetcode  problems
+Contains some of the interesting leetcode  problems
