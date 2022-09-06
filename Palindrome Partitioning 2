@@ -1,0 +1,38 @@
+Given a string s, partition s such that every substring of the partition is a palindrome.
+
+Return the minimum cuts needed for a palindrome partitioning of s.
+
+TC:O(N*N)
+SC:O(N*N)
+
+class Solution {
+
+    public:
+    
+    int minCut(string s) {
+        
+        vector<vector<bool>>dp(s.size()+2,vector<bool>(s.size()+1,0));
+        
+        for(int i=1;i<=s.size();++i){
+            int k=i;
+            for(int j=1;k<=s.size();++j,k++){
+                
+                if(k-j==0||s[k-1]==s[j-1]&&k-j==1)dp[j][k]=1;
+                    
+            else if(s[k-1]==s[j-1]&&dp[j+1][k-1])dp[j][k]=1;
+            
+            }
+        }
+
+        vector<int>mincuts(s.size()+1,0);
+        
+        for(int i=1;i<=s.size();++i){
+            int ans=INT_MAX;
+            for(int j=1;j<=s.size();++j)
+                if(dp[j][i]){ans=min(ans,j==1?0:1+mincuts[j-1]);}
+            mincuts[i]=ans;
+        }
+    
+        return mincuts[s.size()];
+    }
+};
