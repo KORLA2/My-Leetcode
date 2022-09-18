@@ -1,0 +1,36 @@
+class Trie{
+   
+      public:
+    int cnt=0;
+Trie*alpha[26];
+ 
+  };
+
+  class Solution {
+   public:
+    
+    vector<int> sumPrefixScores(vector<string>& words) {
+       Trie*root=new Trie();
+        
+        for(string s:words){
+            Trie *head=root;
+            for(char str:s){
+                if(head->alpha[str-'a']==NULL)
+                 head->alpha[str-'a']=new Trie();
+                
+                (head->alpha[str-'a'])->cnt++;
+                head=head->alpha[str-'a'];
+                }
+            }
+        vector<int>ans;
+        for(string str:words){
+            int cnt=0;
+            Trie*head=root;
+            for(char s:str)
+            {    cnt+= head->alpha[s-'a']->cnt;
+             head=head->alpha[s-'a'];}
+            ans.push_back(cnt);
+        }
+      return ans;  
+    }
+};
