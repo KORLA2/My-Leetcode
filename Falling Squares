@@ -1,0 +1,29 @@
+class Solution {
+public:
+    //DevOps
+    
+    vector<int> fallingSquares(vector<vector<int>>& positions) {
+      vector<int>ans;
+        
+        int gans=INT_MIN;
+        vector<int>height(positions.size(),0);
+        
+        for(int i=0;i<positions.size();++i){
+       
+            int rans=positions[i][1],x=positions[i][1];
+            
+            for(int  j=0;j<i;++j)
+           
+    if(positions[j][0]<positions[i][1]+positions[i][0]&&positions[j][1]+positions[j][0]>positions[i][0])
+    {
+     x=max(x,height[j]+position[i][1]);
+   }   
+        
+           height[i]=x;
+            ans.push_back(gans=max(gans,x));
+        }
+        
+        
+            return ans;
+    }
+};
