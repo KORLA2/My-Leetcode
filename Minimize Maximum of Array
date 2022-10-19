@@ -1,0 +1,15 @@
+  class Solution {
+public:
+    int minimizeArrayValue(vector<int>& nums) {
+long  int sum=0,ans=0;
+        for(int i=0;i<nums.size();++i)
+        {
+            
+        sum+=nums[i];
+        ans=max(ans,(sum+i)/(i+1));
+        }
+                return ans;
+    }
+};
+
+Here by  average only we can make some numbers closer to each other thats it finding at what point the ceil of average is maximum;
