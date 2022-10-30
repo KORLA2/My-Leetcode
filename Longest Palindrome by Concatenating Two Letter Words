@@ -1,0 +1,50 @@
+
+class Solution {
+
+    public:
+    
+    int longestPalindrome (vector<string>& words) {
+        
+
+        
+        map<string,int>mp;
+        
+        for(int i=0;i<words.size();++i)
+        
+            mp[words[i]]++;
+        
+    
+   
+      int ans=0,single=1;
+        
+       for(int i=0;i<words.size();++i) {
+           
+           string str=words[i];
+           
+           reverse(str.begin(),str.end());
+           
+          if(str==words[i] && mp[words[i]]>=2)
+          {
+              mp[words[i]]-=2;
+              
+              ans+=4;
+          }
+          
+           else if( str!=words[i] && mp[words[i]] && mp[str])
+           {
+               mp[str]-=1; mp[words[i]]-=1; ans+=4;
+           }
+               
+           else if( str==words[i] && mp[str] && single ){
+             
+               ans+=2;
+              
+               mp[str]-=1; single=0;
+               
+           }
+       }
+        
+        return ans;
+    }
+    
+};
