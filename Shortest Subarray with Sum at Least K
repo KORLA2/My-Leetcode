@@ -1,1 +1,5 @@
+We need to find subarray of minimum size having sum atleast k .
+
+After ceating prefix sums and finding nearest index whose prefix sum is lessthan or equal to remaining sum (prefix sum -target). How to find the
+nearest index whose prefix sum is <=remainig sum..
 
