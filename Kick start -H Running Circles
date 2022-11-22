@@ -1,1 +1,63 @@
 
+#include<bits/stdc++.h>
+using namespace std;
+main(){
+    int test,cnt=1;
+    cin>>test;
+    
+    while(test--){
+        
+        int len,times;
+        
+        cin>>len>>times;
+         long int ans=0,rem=0;
+        char prev='@';
+        while(times--){
+           
+       long int rot;
+           char dir;
+           
+           cin>>rot>>dir;
+         
+         if(prev=='@'||dir=='C'|| prev==dir){
+
+if(dir=='C'){ans+=(rem+rot)/len;rem=(rem+rot)%len;
+}
+         else{
+      
+        int remaining;
+        
+       ans+= (rot/len);
+
+   remaining=rot%len;
+if(rem-remaining>=0) rem-=remaining;
+
+else{ rem=len+rem-remaining;ans++;}
+
+         }
+         
+         }
+  else 
+  {
+if(dir=='C') rem=(rem+rot)%len;
+
+else {
+
+          int remaining;
+       ans+= (rot/len);
+   remaining=rot%len;
+if(rem-remaining>=0) rem-=remaining;
+
+else{ rem=len+rem-remaining;}
+}
+  }
+
+prev=dir;           
+        }
+ printf("Case #%d: %ld\n",cnt++,ans);
+
+    }
+    
+    
+    
+}
