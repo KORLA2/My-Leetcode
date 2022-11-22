@@ -1,0 +1,68 @@
+class Solution {
+public:
+    
+    bool palindrome(string str){
+
+        int r=str.size();
+        for(int i=0;i<r/2;++i)
+            if(str[i]!=str[r-i-1])return 0;
+       return 1;
+        
+        
+    }
+    
+    vector<vector<int>> palindromePairs(vector<string>& words) {
+        vector<vector<int>>ans;
+        
+        map<string,int>mp;
+        int res=INT_MAX;
+        for(int i=0;i<words.size();++i)
+        { if(i!=0)
+            mp[words[i]]=i;
+        else mp[words[i]]=INT_MAX;
+       
+  if(words[i]=="")res=i;
+        
+        }
+        
+        if(res!=INT_MAX)
+        for(int i=0;i<words.size();++i)if(res!=i && palindrome(words[i]))ans.push_back({i,res});
+        
+        
+        for(int i=0;i<words.size();++i)
+        {
+            
+            string str=words[i];
+            
+            for(int j=0;j<words[i].size();++j)
+            {
+
+                string left=str.substr(0,j);
+                
+                if(!palindrome(left))continue;
+                
+                string right = str.substr(j,str.size());
+                
+                string rightdup=right;
+                
+                reverse(rightdup.begin(),rightdup.end());
+                
+                if(mp[rightdup] && mp[rightdup]!=(i==0?INT_MAX:i)) 
+                    
+                    ans.push_back({mp[rightdup]==INT_MAX?0:mp[rightdup],i});
+                    
+                
+                if(!palindrome(right))continue;
+                
+                reverse(left.begin(),left.end());
+                
+                if(mp[left] && mp[left]!=(i==0?INT_MAX:i)) 
+                    
+                    ans.push_back({i,mp[left]==INT_MAX?0:mp[left]});
+            }
+            
+        }
+           return ans; 
+        
+    }
+};
