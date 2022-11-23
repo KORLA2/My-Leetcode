@@ -1,0 +1,26 @@
+class Solution {
+
+    public:
+    
+    string shiftingLetters(string s, vector<int>& shifts) {
+   
+   int x=0;
+   
+        for(int i=0;i<s.size();++i)
+        
+        x=(x+shifts[i])%26;
+        
+        for(int i=0;i<s.size();++i)
+       
+   {
+   s[j]=(s[j]-97+x)%26+97; 
+   
+   x=abs(x-shifts[i])%26;
+   }             
+                
+        
+        return s;
+        
+        
+    }
+};
