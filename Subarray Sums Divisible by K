@@ -1,0 +1,24 @@
+class Solution {
+public:
+    int subarraysDivByK(vector<int>& nums, int k) {
+      
+        int psum=0,ans=0;
+
+        map<int,int>mp;
+        mp[0]++;
+    
+    for(int i=0;i<nums.size();++i){
+        
+     psum+=nums[i];
+        int x=psum%k;
+        if(x<0)x+=k;
+        if(mp[x])ans+=mp[x];
+       
+        mp[x]++;
+    }
+        
+     
+        return ans;
+    
+    }
+};
